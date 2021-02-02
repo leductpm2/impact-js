@@ -12,11 +12,11 @@ ig.module(
             btnReplay: new ig.Image('media/graphics/game/settings/btn-replay.png'),
             btnResume: new ig.Image('media/graphics/game/settings/btn-resume.png')
         },
-        title: "",
+        title: "SETTINGS",
         onKillCallback: null,
         init: function (x, y, settings) {
             this.spacing = ig.getSetting("_GAME_SETTINGS", "UI", "SPACING");
-            this.title = "SETTINGS";
+            this.title = ig.getSetting("_STRINGS", "GAME", "SETTINGS");
             this.parent(x, y, settings);
         },
         kill: function () {
@@ -33,7 +33,8 @@ ig.module(
                 text: this.title,
                 textData: {
                     fontSize: 50,
-                    textBaseline: "top"
+                    textBaseline: "top",
+                    fontWeight: "bold"
                 }
             });
             this.initButtons();
@@ -69,9 +70,10 @@ ig.module(
         },
     });
     EntityPause = EntitySettings.extend({
+        title: "PAUSED",
         init: function (x, y, settings) {
-            this.title = "PAUSED";
-            this.parent(x, y, settings);
+            this.title = ig.getSetting("_STRINGS", "GAME", "PAUSED");
+            this.parent(x, y, settings);           
         },
         initButtons: function () {
             this.btnHome = this.spawnEntity(EntityButtonImage, OUT_SIDE, OUT_SIDE, {

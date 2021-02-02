@@ -2,7 +2,8 @@ ig.module(
     'game.levels.game'
 ).requires(
     'templates.entities.utils.entity-controller',
-    'game.controllers.settings'
+    'game.controllers.settings',
+    'game.controllers.game-area'
 ).defines(function () {
     LevelGame = {
         "entities": [
@@ -31,6 +32,7 @@ ig.module(
                     this.pausePopup = this.spawnEntity(EntityPause, OUT_SIDE, OUT_SIDE, {});
                 }.bind(this)
             });
+            this.gameArea = this.spawnEntity(EntityGameArea, OUT_SIDE, OUT_SIDE, {});
         },
         updatePosition: function () {
             this.background.pos = {
@@ -41,6 +43,10 @@ ig.module(
             this.btnPause.pos = {
                 x: ig.system.width - this.btnPause.size.x * 1 - spacing,
                 y: spacing
+            };
+            this.gameArea.pos = {
+                x: (ig.system.width - this.gameArea.size.x) * 0.5,
+                y: (ig.system.height - this.gameArea.size.y) * 0.5
             };
         },
     });

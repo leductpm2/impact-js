@@ -23,6 +23,8 @@ ig.module(
             btnFullscreenExit: new ig.Image("media/graphics/game/home/exit-fullscreen.png")
         },
         initChildEntity: function () {
+            log(this.className)
+            this.log("hereerer")
             this.background = this.spawnEntity(EntitySimpleImage, OUT_SIDE, OUT_SIDE, {
                 image: this.preload.background
             });
@@ -48,6 +50,8 @@ ig.module(
                     image: this.preload.btnMoreGame
                 });
             }
+
+            this.btnSettings.initBlinking();
         },
         updatePosition: function () {
             this.background.pos = {
